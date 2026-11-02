@@ -62,7 +62,12 @@ Career creation and editing are admin-only at `POST/PUT/DELETE /api/careers`.
 
 ## Build and deployment
 
-Run `npm run build --prefix frontend` to create the production bundle in `frontend/dist`. Deploy the frontend and API separately, set the production API URL and `CLIENT_URL`, use Atlas or another managed MongoDB service, and provide secrets through the host's environment settings. Put the API behind HTTPS and use a persistent private file store if uploaded files need to be retained; this implementation processes PDFs in memory and stores extracted text in the user's private resume record.
+This project includes complete configuration for deployment on [Render](https://render.com) using the included `render.yaml` Blueprint or standalone services.
+
+- For step-by-step instructions on deploying to Render.com, see [DEPLOYMENT.md](file:///C:/Users/MG%20shreya/Desktop/MFEF%20Project/DEPLOYMENT.md).
+- To build the frontend bundle: `npm run build`.
+- To run unified production server: `npm start`.
+- Deploy the frontend and API together (unified service) or separately, configure `MONGODB_URI`, `JWT_SECRET`, and optional `GEMINI_API_KEY`.
 
 ## Notes
 

@@ -1,1 +1,17 @@
-{"name":"careerpilot-ai","version":"1.0.0","private":true,"scripts":{"dev":"concurrently \"npm:dev:server\" \"npm:dev:client\"","dev:server":"npm --prefix backend run dev","dev:client":"npm --prefix frontend run dev","build":"npm --prefix frontend run build","start":"npm --prefix backend start"},"devDependencies":{"concurrently":"^9.1.2"}}
+{
+  "name": "careerpilot-ai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm --prefix backend run dev",
+    "dev:client": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "render-build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js",
+    "test": "npm --prefix backend test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
