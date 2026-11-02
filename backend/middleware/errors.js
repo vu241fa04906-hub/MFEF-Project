@@ -1,0 +1,2 @@
+export function notFound(req,res){res.status(404).json({message:'That endpoint was not found.'});}
+export function errorHandler(err,req,res,next){console.error(err);const status=err.status|| (err.name==='ValidationError'||err.name==='MulterError'||err.name==='CastError'?400:err.code===11000?409:500);res.status(status).json({message:status===500?'Something went wrong. Please try again.':err.message});}

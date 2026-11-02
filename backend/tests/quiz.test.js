@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{gradeQuiz,quizQuestions,publicQuestions}from'../services/quiz.js';
+test('assessment hides answers until submission',()=>{const exposed=publicQuestions();assert.equal(exposed.length,quizQuestions.length);assert.ok(exposed.every(q=>!('answer'in q)&&!('explanation'in q)))});
+test('scores correct answers and topic areas on the server',()=>{const answers=Object.fromEntries(quizQuestions.map(q=>[q.id,q.answer]));const result=gradeQuiz(answers);assert.equal(result.score,100);assert.equal(result.correctCount,quizQuestions.length);assert.equal(result.suggestions.length,0);assert.equal(result.areaScores.length,6)});
+test('invalid and missing answers earn no credit',()=>{const result=gradeQuiz({[quizQuestions[0].id]:null,[quizQuestions[1].id]:999});assert.equal(result.correctCount,0);assert.equal(result.score,0);assert.ok(result.suggestions.length>0)});

@@ -1,0 +1,4 @@
+import{QuizResult,Notification}from'../models/index.js';import{publicQuestions,gradeQuiz}from'../services/quiz.js';
+export function getQuiz(req,res){res.json({questions:publicQuestions()})}
+export async function submitQuiz(req,res){if(!req.body||typeof req.body.answers!=='object'||Array.isArray(req.body.answers))return res.status(400).json({message:'Submit quiz answers as an object keyed by question ID.'});const result=gradeQuiz(req.body.answers),saved=await QuizResult.create({userId:req.user.id,...result});await Notification.create({userId:req.user.id,title:'Assessment completed',message:`You scored ${result.correctCount} of ${result.totalQuestions}. Review your topic breakdown and suggested skills.`,type:'assessment',link:'/quiz'});res.status(201).json(saved)}
+export async function quizHistory(req,res){res.json(await QuizResult.find({userId:req.user.id}).sort('-createdAt').limit(20))}

@@ -1,0 +1,10 @@
+export const learningResources=[
+ {id:'mdn-web',title:'Learn web development',category:'Web development',difficulty:'Beginner',description:'Structured modules covering HTML, CSS, JavaScript, accessibility, and practical web development.',url:'https://developer.mozilla.org/en-US/docs/Learn_web_development',source:'MDN Web Docs'},
+ {id:'python-tutorial',title:'The Python Tutorial',category:'Python',difficulty:'Beginner',description:'Official Python language tutorial with language fundamentals and examples.',url:'https://docs.python.org/3/tutorial/',source:'Python Documentation'},
+ {id:'java-learning',title:'Learn Java',category:'Java',difficulty:'Beginner',description:'Official Java learning paths covering first steps, language basics, collections, and tools.',url:'https://dev.java/learn/',source:'Dev.java'},
+ {id:'google-mlcc',title:'Machine Learning Crash Course',category:'AI & machine learning',difficulty:'Intermediate',description:'Practical modules on core machine learning concepts, data, models, and exercises.',url:'https://developers.google.com/machine-learning/crash-course',source:'Google for Developers'},
+ {id:'postgres-tutorial',title:'PostgreSQL SQL Tutorial',category:'Databases',difficulty:'Beginner',description:'Hands-on introduction to relational concepts and SQL using PostgreSQL.',url:'https://www.postgresql.org/docs/current/tutorial.html',source:'PostgreSQL Documentation'},
+ {id:'docker-get-started',title:'Get started with Docker',category:'DevOps',difficulty:'Beginner',description:'Official guides for containers, images, and running application stacks.',url:'https://docs.docker.com/get-started/',source:'Docker Docs'},
+ {id:'mdn-js',title:'JavaScript Guide',category:'Programming',difficulty:'Beginner',description:'Core JavaScript guides, concepts, and reference materials.',url:'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide',source:'MDN Web Docs'},
+ {id:'git-book',title:'Pro Git book',category:'Tools',difficulty:'Beginner',description:'A detailed guide to Git fundamentals and common workflows.',url:'https://git-scm.com/book/en/v2',source:'Git SCM'}
+];

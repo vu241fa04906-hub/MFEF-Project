@@ -1,0 +1,1 @@
+import{Navigate,Outlet}from'react-router-dom';import{useAuth}from'../context/AuthContext';export default function ProtectedRoute({adminOnly=false}){let{user,loading}=useAuth();if(loading)return <div className="center-screen">Loading…</div>;if(!user)return <Navigate to="/login" replace/>;if(adminOnly&&user.role!=='admin')return <Navigate to="/dashboard" replace/>;return <Outlet/>}

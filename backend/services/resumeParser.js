@@ -1,0 +1,2 @@
+import pdf from 'pdf-parse/lib/pdf-parse.js';
+export async function extractResumeText(buffer){if(!Buffer.isBuffer(buffer)||buffer.subarray(0,5).toString()!=='%PDF-')throw Object.assign(new Error('The uploaded file is not a valid PDF.'),{status:400});try{const data=await pdf(buffer);return String(data.text||'').slice(0,30000)}catch{throw Object.assign(new Error('This PDF could not be read. Please choose a valid, text-based PDF.'),{status:400})}}
