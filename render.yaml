@@ -28,3 +28,4 @@ services:
         value: 5
       - key: ADMIN_SETUP_KEY
         generateValue: true
+

@@ -67,13 +67,32 @@ app.use('/api', api);
 
 // Serve frontend static build if it exists (Render unified deployment / production)
 const distPath = path.resolve(__dirname, '../frontend/dist');
-if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
+const altDistPath = path.resolve(process.cwd(), 'frontend/dist');
+const finalDistPath = fs.existsSync(distPath)
+  ? distPath
+  : fs.existsSync(altDistPath)
+  ? altDistPath
+  : null;
+
+if (finalDistPath) {
+  console.log(`Serving frontend static files from: ${finalDistPath}`);
+  app.use(express.static(finalDistPath));
   app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api')) {
       return next();
     }
-    res.sendFile(path.join(distPath, 'index.html'));
+    res.sendFile(path.join(finalDistPath, 'index.html'));
+  });
+} else {
+  console.warn(`WARNING: Frontend build folder not found at ${distPath} or ${altDistPath}`);
+  app.get('/', (req, res) => {
+    res.send(`
+      <div style="font-family:sans-serif;text-align:center;padding:50px;">
+        <h2>CareerPilot API is Running!</h2>
+        <p>Frontend production build was not found. Please ensure the build command <code>npm run build</code> completed.</p>
+        <p><a href="/api/health">Check API Health</a></p>
+      </div>
+    `);
   });
 }
 
